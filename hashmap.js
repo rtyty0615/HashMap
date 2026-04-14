@@ -21,7 +21,11 @@ class HashMap {
             const list = new LinkedList();
             this.buckets[this.hash(key)] = list;
         }
-        this.buckets[this.hash(key)].append(value);
+        this.buckets[this.hash(key)].append(key, value);
+    }
+
+    get(key) {
+
     }
 
     print() {
@@ -31,7 +35,8 @@ class HashMap {
 }
 
 class Node {
-    constructor(value) {
+    constructor(key, value) {
+        this.key = key;
         this.value = value;
         this.nextNode = null;
     }
@@ -42,8 +47,8 @@ class LinkedList {
         this.head = null;
     }
 
-    append(value) {
-        const newNode = new Node(value);
+    append(key, value) {
+        const newNode = new Node(key, value);
         if (this.head === null) {
             this.head = newNode;
             return
