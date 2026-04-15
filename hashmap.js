@@ -35,12 +35,11 @@ class HashMap {
     }
 
     entrySize() {
-        return console.log(this.entryCount)
+        return this.entryCount
     }
 
     upgradeCapacity() {
         const currentArr = this.entries();
-        console.log(currentArr);
 
         this.capacity *= 2;
         this.loadLevel = Math.trunc(this.loadFactor * this.capacity);
@@ -50,8 +49,6 @@ class HashMap {
         for (const keyPair of currentArr) {
             this.set(keyPair[0], keyPair[1]);
         }
-
-        console.log(this.capacity)
     }
 
     get(key) {
@@ -323,7 +320,6 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 test.entrySize()
-
 
 test.set('moon', 'silver')
 
