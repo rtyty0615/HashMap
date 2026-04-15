@@ -94,6 +94,19 @@ class HashMap {
         return arr
     }
 
+    entries() {
+        const arr = [];
+        for (const bucket of this.buckets) {
+            if (bucket && bucket.totalEntries()) {
+                for (const entry of bucket.totalEntries()) {
+                    arr.push(entry)
+                }
+            }
+        }
+        return arr
+
+    }
+
     print() {
         console.log(this.buckets)
     }
@@ -243,6 +256,26 @@ class LinkedList {
         return arr
     }
 
+    totalEntries() {
+        let current = this.head;
+        const arr = [];
+        if (current === null) {
+            return null
+        };
+        const arrPair = [];
+        arrPair.push(current.key);
+        arrPair.push(current.value);
+        arr.push(arrPair);
+        while (current.nextNode) {
+            const arrPair = [];
+            current = current.nextNode;
+            arrPair.push(current.key);
+            arrPair.push(current.value);
+            arr.push(arrPair);
+        };
+        return arr
+    }
+
 }
 
 const test = new HashMap();
@@ -262,7 +295,7 @@ test.set('lion', 'golden')
 
 test.print()
 test.length()
-test.values()
+test.entries()
 
 
 // test.remove('apple')
